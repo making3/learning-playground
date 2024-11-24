@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <script type="text/javascript">
+      function addToBody() {
+        const someContentTmpl = document.getElementById('some-content');
+
+        const root = document.getElementById('root');
+        const shadowRoot = root.attachShadow({ mode: 'open' });
+        console.log(shadowRoot === root.shadowRoot);
+        shadowRoot.append(someContentTmpl.content.cloneNode(true));
+      }
+    </script>
+  </head>
+  <body>
+    <template id="some-content">
+      <p>Hello world, I am some content</p>
+    </template>
+
+    <button onclick="addToBody();">Add To Body</button>
+
+    <div id="root"></div>
+  </body>
+</html>
