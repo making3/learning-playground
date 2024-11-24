@@ -2,11 +2,16 @@ import { useState } from 'react';
 import ExtendRefWithEffect from './ch9/ExtendRefWithEffect';
 import ViewChapter from './ViewChapter';
 import ShakeInputWithImperativeRef from './ch9/ShakeInputWithImperativeRef';
+import ExtendRefWithEffectAndNoState from './ch9/ExtendRefWithEffectAndNoState';
 
 const chapters = [
   {
     number: 9,
-    examples: [ExtendRefWithEffect, ShakeInputWithImperativeRef],
+    examples: [
+      ExtendRefWithEffect,
+      ExtendRefWithEffectAndNoState,
+      ShakeInputWithImperativeRef,
+    ],
   },
 ].reduce((acc, chapter) => {
   chapter.examples.forEach((ExComp) => {
