@@ -1,0 +1,81 @@
+<html>
+  <head>
+    <script type="text/javascript">
+      // https://javascript.info/shadow-dom-style
+      class XButton extends HTMLElement {
+        constructor() {
+          super();
+          this.attachShadow({ mode: 'open' });
+          this.shadowRoot.append(
+            document.getElementById('btnTemplate').content.cloneNode(true)
+          );
+        }
+      }
+
+      class ActionMenu extends HTMLElement {
+        constructor() {
+          super();
+          this.attachShadow({ mode: 'open' });
+          this.shadowRoot.append(
+            document
+              .getElementById('actionMenuTemplate')
+              .content.cloneNode(true)
+          );
+        }
+      }
+
+      customElements.define('x-button', XButton);
+      customElements.define('action-menu', ActionMenu);
+    </script>
+  </head>
+  <body>
+    <template id="actionMenuTemplate">
+      <fieldset>
+        <slot name="legend"><legend>My Actions</legend></slot>
+        <slot></slot>
+      </fieldset>
+    </template>
+    <template id="btnTemplate">
+      <style>
+        button {
+          padding: 8px;
+          font-family: Arial, Helvetica, sans-serif;
+          border: 1px solid black;
+        }
+
+        :host([variant='primary']) {
+          button {
+            color: white;
+            background-color: var(--variant-primary-color, black);
+          }
+        }
+
+        :host([variant='secondary']) {
+          button {
+            background-color: aquamarine;
+          }
+        }
+      </style>
+      <button>
+        <slot>Button</slot>
+      </button>
+    </template>
+
+    <style>
+      :root {
+        --variant-primary-color: blue;
+      }
+
+      x-button {
+        display: block;
+        margin: 10px 0;
+      }
+    </style>
+
+    <action-menu>
+      <legend slot="legend">Buttons</legend>
+      <x-button variant="primary">Primary</x-button>
+      <x-button variant="secondary">Secondary</x-button>
+    </action-menu>
+  </body>
+</html>
