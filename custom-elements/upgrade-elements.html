@@ -1,0 +1,63 @@
+<html>
+  <head>
+    <script type="text/javascript">
+      class MyElement extends HTMLElement {
+        static observedAttributes = ['id'];
+
+        constructor() {
+          super();
+          const b = document.getElementById('b');
+          if (b) {
+            b.remove();
+          }
+
+          console.log(`new MyElement({ id: '${this.getAttribute('id')}' })`);
+        }
+
+        connectedCallback() {
+          const children = this.innerHTML;
+          this.style.display = 'block';
+          this.style.border = '1px dashed black';
+          this.style.padding = '10px';
+          const content = document.createElement('div');
+          content.innerHTML = children;
+          content.style.color = 'red';
+
+          this.innerHTML = '';
+          this.appendChild(content);
+        }
+
+        attributeChangedCallback(name, oldValue, newValue, foo) {
+          console.log(
+            `Attribute ${name} has changed from '${oldValue}' to '${newValue}'.`
+          );
+        }
+      }
+
+      function upgradeMyElement() {
+        customElements.define('my-element', MyElement);
+      }
+
+      customElements.whenDefined('my-element').then(() => {
+        console.log('whenDefined number 1');
+      });
+      customElements.whenDefined('my-element').then(() => {
+        console.log('whenDefined number 2');
+      });
+    </script>
+    <style>
+      my-element:not(:defined) {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div style="border: 1px solid hsl(1, 50%, 50%); padding: 5px">
+      There is an custom element inside this div with "Sample Text" but it's
+      hidden until it's upgraded (using <code>:not:defined</code>).
+      <my-element id="a">Sample Text</my-element>
+      <my-element id="b">Another element!</my-element>
+    </div>
+    <button onclick="upgradeMyElement();">Upgrade My Element</button>
+  </body>
+</html>
