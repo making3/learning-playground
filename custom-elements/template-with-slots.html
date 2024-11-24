@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <script type="text/javascript">
+      function addToBody() {
+        const val = document.getElementById('my-input').value;
+        if (!val) {
+          console.warn('Need a value');
+          return;
+        }
+
+        const someContentTmpl = document.getElementById('some-content');
+
+        const content = someContentTmpl.content.cloneNode(true);
+        content.querySelector(`slot[name='message']`).textContent = val;
+
+        document.body.appendChild(content);
+      }
+    </script>
+  </head>
+  <body>
+    <template id="some-content">
+      <p><slot name="message"></slot></p>
+    </template>
+
+    <input id="my-input" />
+    <button onclick="addToBody();">Add To Body</button>
+  </body>
+</html>
