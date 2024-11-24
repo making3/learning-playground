@@ -16,6 +16,7 @@
   </head>
   <body>
     <template id="user-info">
+      <slot></slot>
       <div>
         <div>First Name: <slot name="firstname"></slot></div>
         <div>Last Name: <slot name="lastname"></slot></div>
@@ -30,6 +31,8 @@
       </div>
     </template>
     <my-element>
+      <h1>My Title</h1>
+      <h2>Using default slots</h2>
       <span slot="random-slot" style="font-weight: bold; color: red"
         >Random slot goes here - this is discarded as it is not handled by the
         shadow dom</span
