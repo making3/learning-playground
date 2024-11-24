@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <script type="text/javascript">
+      // From https://javascript.info/slots-composition
+      class CustomMenu extends HTMLElement {
+        constructor() {
+          super();
+          this.attachShadow({ mode: 'open' });
+          this.shadowRoot.append(
+            document.getElementById('tmpl').content.cloneNode(true)
+          );
+        }
+      }
+
+      customElements.define('custom-menu', CustomMenu);
+    </script>
+  </head>
+  <body>
+    <template id="tmpl">
+      <style>
+        /* menu styles */
+      </style>
+      <div class="menu">
+        <slot name="title"></slot>
+        <ul>
+          <slot name="item"></slot>
+        </ul>
+      </div>
+    </template>
+
+    <custom-menu>
+      <span slot="title">My Title</span>
+      <li slot="item">Item 1</li>
+      <li slot="item">Item 2</li>
+      <li slot="item">Item 3</li>
+    </custom-menu>
+  </body>
+</html>
