@@ -1,0 +1,76 @@
+<html>
+  <head>
+    <script type="text/javascript">
+      // From https://javascript.info/slots-composition
+      class CustomMenu extends HTMLElement {
+        #items = [];
+        #itemSlot;
+
+        constructor() {
+          super();
+          this.attachShadow({ mode: 'open' });
+          this.shadowRoot.append(
+            document.getElementById('aboutTemplate').content.cloneNode(true)
+          );
+          this.shadowRoot.append(
+            document.getElementById('menuTemplate').content.cloneNode(true)
+          );
+        }
+
+        connectedCallback() {
+          this.#itemSlot = this.shadowRoot.querySelector(`slot[name='item']`);
+
+          this.#itemSlot.addEventListener('slotchange', (e) => {
+            const items = e.target
+              .assignedElements()
+              .map((elem) => elem.getAttribute('key'));
+
+            console.log('Items: ' + items);
+          });
+        }
+
+        disconnectedCallback() {
+          this.#itemSlot.removeEventListener('slotchange');
+        }
+      }
+
+      customElements.define('custom-menu', CustomMenu);
+    </script>
+  </head>
+  <body>
+    <template id="aboutTemplate">
+      <style>
+        ::slotted([slot='title']) {
+          font-weight: bold;
+        }
+        ::slotted([slot='desc']) {
+          font-weight: bold;
+        }
+      </style>
+      <div>
+        <slot name="title"></slot>
+        <slot name="desc"></slot>
+      </div>
+    </template>
+    <template id="menuTemplate">
+      <style>
+        ::slotted(li[slot='item']) {
+          font-style: italic;
+        }
+      </style>
+      <div>
+        <ul>
+          <slot name="item"></slot>
+        </ul>
+      </div>
+    </template>
+
+    <custom-menu id="myMenu">
+      <h1 slot="title">My Title</h1>
+      <p slot="desc">About my menu below:</p>
+      <li key="1" slot="item">Item 1</li>
+      <li key="2" slot="item">Item 2</li>
+      <li key="3" slot="item">Item 3</li>
+    </custom-menu>
+  </body>
+</html>
