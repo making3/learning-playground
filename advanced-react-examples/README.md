@@ -1,3 +1,5 @@
+This is playing around with examples from [Advanced React](https://www.advanced-react.com/);
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
