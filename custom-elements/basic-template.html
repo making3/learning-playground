@@ -1,0 +1,18 @@
+<html>
+  <head>
+    <script type="text/javascript">
+      function addToBody() {
+        const someContentTmpl = document.getElementById('some-content');
+
+        document.body.appendChild(someContentTmpl.content.cloneNode(true));
+      }
+    </script>
+  </head>
+  <body>
+    <template id="some-content">
+      <p>Hello world, I am some content</p>
+    </template>
+
+    <button onclick="addToBody();">Add To Body</button>
+  </body>
+</html>
