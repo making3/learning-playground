@@ -3,6 +3,9 @@
     <script type="text/javascript">
       // From https://javascript.info/slots-composition
       class CustomMenu extends HTMLElement {
+        #items = [];
+        #itemSlot;
+
         constructor() {
           super();
           this.attachShadow({ mode: 'open' });
@@ -10,15 +13,60 @@
             document.getElementById('tmpl').content.cloneNode(true)
           );
         }
+
+        connectedCallback() {
+          this.#itemSlot = this.shadowRoot.querySelector(`slot[name='item']`);
+
+          this.#itemSlot.addEventListener('slotchange', (e) => {
+            const items = e.target
+              .assignedElements()
+              .map((elem) => elem.getAttribute('key'));
+
+            console.log('Items: ' + items);
+          });
+        }
+
+        disconnectedCallback() {
+          this.#itemSlot.removeEventListener('slotchange');
+        }
       }
 
       customElements.define('custom-menu', CustomMenu);
+
+      function addNewItem() {
+        const newValueElement = document.getElementById('val');
+        const newValue = newValueElement.value;
+
+        if (!newValue) {
+          return;
+        }
+
+        const customMenu = document.getElementById('myMenu');
+        const newListItem = document.createElement('li');
+        newListItem.setAttribute('slot', 'item');
+        newListItem.setAttribute(
+          'key',
+          customMenu.getElementsByTagName('li').length + 1
+        );
+        newListItem.innerText = newValue;
+
+        customMenu.appendChild(newListItem);
+
+        newValueElement.value = '';
+        newValueElement.focus();
+      }
     </script>
   </head>
   <body>
     <template id="tmpl">
       <style>
-        /* menu styles */
+        ::slotted([slot='title']) {
+          font-weight: bold;
+        }
+
+        ::slotted(li[slot='item']) {
+          font-style: italic;
+        }
       </style>
       <div class="menu">
         <slot name="title"></slot>
@@ -28,11 +76,16 @@
       </div>
     </template>
 
-    <custom-menu>
+    <custom-menu id="myMenu">
       <span slot="title">My Title</span>
-      <li slot="item">Item 1</li>
-      <li slot="item">Item 2</li>
-      <li slot="item">Item 3</li>
+      <li key="1" slot="item">Item 1</li>
+      <li key="2" slot="item">Item 2</li>
+      <li key="3" slot="item">Item 3</li>
     </custom-menu>
+
+    <div>
+      New Item: <input id="val" />
+      <button onclick="addNewItem()">Add</button>
+    </div>
   </body>
 </html>
