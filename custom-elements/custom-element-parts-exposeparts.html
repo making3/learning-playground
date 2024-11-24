@@ -1,0 +1,65 @@
+<html>
+  <head>
+    <script type="text/javascript">
+      class MyElement extends HTMLElement {
+        constructor() {
+          super();
+          this.attachShadow({ mode: 'open' });
+          this.shadowRoot.append(
+            document.getElementById('tmpl').content.cloneNode(true)
+          );
+        }
+      }
+      class AnotherOne extends HTMLElement {
+        constructor() {
+          super();
+          this.attachShadow({ mode: 'open' });
+          this.shadowRoot.append(
+            document.getElementById('anotherTmpl').content.cloneNode(true)
+          );
+        }
+      }
+      customElements.define('my-element', MyElement);
+      customElements.define('another-one', AnotherOne);
+    </script>
+    <style>
+      .first-element::part(title) {
+        color: blue;
+      }
+      .first-element::part(body) {
+        color: darkblue;
+        font-style: italic;
+      }
+
+      .second-element::part(title) {
+        color: green;
+      }
+      .second-element::part(body) {
+        color: darkgreen;
+        font-style: italic;
+      }
+    </style>
+  </head>
+  <body>
+    <template id="tmpl">
+      <!--Adding ", body" here would allow the above styles to apply-->
+      <another-one exportparts="title">
+        <slot></slot>
+        <slot slot="body" name="body"></slot>
+      </another-one>
+    </template>
+    <template id="anotherTmpl">
+      <h1 part="title"><slot></slot></h1>
+      <slot part="body" name="body"></slot>
+    </template>
+
+    <my-element class="first-element">
+      Hello World
+      <p slot="body">Generic message here</p>
+    </my-element>
+    <my-element class="second-element">
+      I am green
+      <p slot="body">I am the green body</p>
+    </my-element>
+  </body>
+</html>
