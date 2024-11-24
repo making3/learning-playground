@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <script type="text/javascript">
+      // Example from https://html.spec.whatwg.org/multipage/custom-elements.html#custom-element-conformance
+      class MyElement extends HTMLElement {
+        constructor() {
+          super();
+          console.log('MyElement()');
+        }
+        connectedCallback() {
+          // This is called anytime `.append()` is called, but constructor only called with `new MyElement()`
+          console.log('connectedCallback');
+          this.innerHTML = 'I am an element';
+        }
+      }
+      customElements.define('my-element', MyElement);
+
+      const ele = new MyElement();
+
+      function addParent() {
+        document.body.append(ele);
+      }
+
+      function removeParent() {
+        document.body.removeChild(ele);
+      }
+    </script>
+  </head>
+  <body>
+    <button onclick="addParent();">Add Parent</button>
+    <button onclick="removeParent();">Remove Parent</button>
+  </body>
+</html>
