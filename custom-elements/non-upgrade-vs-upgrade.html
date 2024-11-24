@@ -1,0 +1,83 @@
+<html>
+  <head>
+    <script type="text/javascript">
+      class AlreadyUpgradedElement extends HTMLElement {
+        constructor() {
+          super();
+          console.log(
+            '[AlreadyUpgradedElement#constructor] Hello: ',
+            this.getAttribute('hello')
+          );
+        }
+
+        connectedCallback() {
+          console.log(
+            '[AlreadyUpgradedElement#connectedCallback] Hello: ',
+            this.getAttribute('hello')
+          );
+        }
+      }
+
+      customElements.define('already-upgraded-element', AlreadyUpgradedElement);
+
+      class MyElement extends HTMLElement {
+        constructor() {
+          super();
+          console.log(
+            '[MyElement#constructor] Hello: ',
+            this.getAttribute('hello')
+          );
+        }
+
+        connectedCallback() {
+          const children = this.innerHTML;
+          this.style.display = 'block';
+          this.style.border = '1px dashed black';
+          this.style.padding = '10px';
+          const content = document.createElement('div');
+          content.innerHTML = children;
+          content.style.color = 'red';
+
+          this.innerHTML = '';
+          this.appendChild(content);
+          console.log(
+            '[MyElement#connectedCallback] Hello: ',
+            this.getAttribute('hello')
+          );
+        }
+      }
+
+      function upgradeMyElement() {
+        customElements.define('my-element', MyElement);
+      }
+    </script>
+    <style>
+      my-element:not(:defined) {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div style="border: 1px solid hsl(1, 50%, 50%); padding: 5px">
+      There is an custom element inside this div with "Sample Text" but it's
+      hidden until it's upgraded (using <code>:not:defined</code>).
+      <my-element hello="world">Sample Text</my-element>
+      <my-element hello="Matt">Another element!</my-element>
+    </div>
+    <button onclick="upgradeMyElement();">Upgrade My Element</button>
+    <div style="border: 1px solid hsl(90, 50%, 50%); padding: 5px">
+      There is an custom element inside this div with "I am already upgrade",
+      and it's already been defined by
+      <code
+        >customElements.define('already-upgraded-element',
+        AlreadyUpgradedElement).</code
+      >
+      <already-upgraded-element hello="world"
+        >I am already upgraded</already-upgraded-element
+      >
+      <already-upgraded-element hello="Matt"
+        >I am already upgraded</already-upgraded-element
+      >
+    </div>
+  </body>
+</html>
