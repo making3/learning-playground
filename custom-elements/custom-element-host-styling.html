@@ -1,0 +1,59 @@
+<html>
+  <head>
+    <script type="text/javascript">
+      class MyElement extends HTMLElement {
+        constructor() {
+          super();
+          this.attachShadow({ mode: 'open' });
+          this.shadowRoot.append(
+            document.getElementById('tmpl').content.cloneNode(true)
+          );
+        }
+      }
+      class YourElement extends HTMLElement {
+        constructor() {
+          super();
+          this.attachShadow({ mode: 'open' });
+          this.shadowRoot.append(
+            document.getElementById('tmpl').content.cloneNode(true)
+          );
+        }
+      }
+      customElements.define('my-element', MyElement);
+      customElements.define('your-element', YourElement);
+    </script>
+  </head>
+  <body>
+    <template id="tmpl">
+      <style>
+        :host {
+          border: 1px dashed greenyellow;
+          display: block;
+          margin: 4px 0;
+        }
+
+        :host(my-element) {
+          padding: 5px;
+        }
+
+        :host(your-element) {
+          padding: 25px;
+          font-size: 24px;
+        }
+
+        :host([theme='dark']) {
+          background-color: darkgray;
+        }
+
+        :host([theme='light']) {
+          background-color: lightgray;
+        }
+      </style>
+      <h1 part="title"><slot></slot></h1>
+    </template>
+
+    <my-element theme="dark">Spooky</my-element>
+    <your-element theme="dark">Spookier</your-element>
+    <my-element theme="light">Blinding</my-element>
+  </body>
+</html>
