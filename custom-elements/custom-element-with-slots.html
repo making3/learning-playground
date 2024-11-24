@@ -19,9 +19,22 @@
       <div>
         <div>First Name: <slot name="firstname"></slot></div>
         <div>Last Name: <slot name="lastname"></slot></div>
+        <div>
+          Message:
+          <slot name="message">Message here?</slot>
+        </div>
+        <div>
+          Unused slot:
+          <slot name="unused-slot-ex">This slot is unused?</slot>
+        </div>
       </div>
     </template>
     <my-element>
+      <span slot="random-slot" style="font-weight: bold; color: red"
+        >Random slot goes here - this is discarded as it is not handled by the
+        shadow dom</span
+      >
+      <span slot="message">Sample message goes here</span>
       <span slot="firstname">Matt</span>
       <span slot="lastname">King</span>
     </my-element>

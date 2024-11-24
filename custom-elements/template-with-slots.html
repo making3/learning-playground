@@ -3,15 +3,14 @@
     <script type="text/javascript">
       function addToBody() {
         const val = document.getElementById('my-input').value;
-        if (!val) {
-          console.warn('Need a value');
-          return;
-        }
 
         const someContentTmpl = document.getElementById('some-content');
 
         const content = someContentTmpl.content.cloneNode(true);
-        content.querySelector(`slot[name='message']`).textContent = val;
+        if (val) {
+          // Oddly, this won't "remove" <label slot="message">? Or <label slot="message" doesn't really matter
+          content.querySelector(`slot[name='message']`).textContent = val;
+        }
 
         document.body.appendChild(content);
       }
@@ -20,6 +19,10 @@
   <body>
     <template id="some-content">
       <p><slot name="message"></slot></p>
+      <label slot="message" style="color: red; font-weight: bold"
+        >Set a message! (this isn't removed when simply cloning a
+        template!)</label
+      >
     </template>
 
     <input id="my-input" />
