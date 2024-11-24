@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <script type="text/javascript">
+      class MyElement extends HTMLElement {
+        constructor() {
+          super();
+          this.attachShadow({ mode: 'open' });
+          this.shadowRoot.append(
+            document.getElementById('user-info').content.cloneNode(true)
+          );
+        }
+      }
+
+      customElements.define('my-element', MyElement);
+    </script>
+  </head>
+  <body>
+    <template id="user-info">
+      <div>
+        <div>First Name: <slot name="firstname"></slot></div>
+        <div>Last Name: <slot name="lastname"></slot></div>
+      </div>
+    </template>
+    <my-element>
+      <span slot="firstname">Matt</span>
+      <span slot="lastname">King</span>
+    </my-element>
+  </body>
+</html>
