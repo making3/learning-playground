@@ -1,6 +1,12 @@
 <html>
   <head>
     <script type="text/javascript">
+      class LegendTitle extends HTMLElement {
+        connectedCallback() {
+          this.textContent = this.getAttribute('title');
+        }
+      }
+
       // https://javascript.info/shadow-dom-style
       class XButton extends HTMLElement {
         constructor() {
@@ -24,6 +30,7 @@
         }
       }
 
+      customElements.define('legend-title', LegendTitle);
       customElements.define('x-button', XButton);
       customElements.define('action-menu', ActionMenu);
     </script>
@@ -31,7 +38,7 @@
   <body>
     <template id="actionMenuTemplate">
       <fieldset>
-        <slot name="legend"><legend>My Actions</legend></slot>
+        <legend><slot name="legend">My Actions</slot></legend>
         <slot></slot>
       </fieldset>
     </template>
@@ -73,7 +80,7 @@
     </style>
 
     <action-menu>
-      <legend slot="legend">Buttons</legend>
+      <legend-title slot="legend" title="Buttons"></legend-title>
       <x-button variant="primary">Primary</x-button>
       <x-button variant="secondary">Secondary</x-button>
     </action-menu>
