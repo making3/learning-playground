@@ -47,9 +47,9 @@ export default function Chapters() {
         value={selectedExample ? selectedExample.exampleName : ''}
       >
         <option value=""></option>
-        {chapters.map(({ exampleName }) => (
+        {chapters.map(({ chapter, exampleName }) => (
           <option key={exampleName} value={exampleName}>
-            {exampleName}
+            CH{chapter}: {exampleName}
           </option>
         ))}
       </select>
