@@ -4,8 +4,15 @@ import ViewChapter from './ViewChapter';
 import ShakeInputWithImperativeRef from './ch9/ShakeInputWithImperativeRef';
 import ExtendRefWithEffectAndNoState from './ch9/ExtendRefWithEffectAndNoState';
 import SendRequestRefWithValue from './ch11/SendRequestRefWithValue';
+import ToggleWithReducer from './ch8/ToggleWithReducer';
+import ToggleWithStateCallback from './ch8/ToggleWithStateCallback';
+import NoToggle from './ch8/NoToggle';
 
 const chapters = [
+  {
+    number: 8,
+    examples: [NoToggle, ToggleWithReducer, ToggleWithStateCallback],
+  },
   {
     number: 9,
     examples: [
