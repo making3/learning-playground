@@ -3,6 +3,7 @@ import ExtendRefWithEffect from './ch9/ExtendRefWithEffect';
 import ViewChapter from './ViewChapter';
 import ShakeInputWithImperativeRef from './ch9/ShakeInputWithImperativeRef';
 import ExtendRefWithEffectAndNoState from './ch9/ExtendRefWithEffectAndNoState';
+import SendRequestRefWithValue from './ch11/SendRequestRefWithValue';
 
 const chapters = [
   {
@@ -13,8 +14,15 @@ const chapters = [
       ShakeInputWithImperativeRef,
     ],
   },
+  {
+    number: 11,
+    examples: [SendRequestRefWithValue],
+  },
 ].reduce((acc, chapter) => {
   chapter.examples.forEach((ExComp) => {
+    if (!ExComp.title) {
+      throw new Error('must have <ComponentExport>.title property ');
+    }
     acc.push({
       chapter: chapter.number,
       Component: ExComp,
