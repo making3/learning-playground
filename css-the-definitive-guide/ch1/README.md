@@ -41,4 +41,4 @@
 
 # Examples
 
--   [alternative-stylesheets.html](./alternative-stylesheets.html)
+-   [Alternative Stylesheets](./examples/alternative-stylesheets.html)
