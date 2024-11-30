@@ -58,3 +58,12 @@
             -   `h1 ~ ol { ... }`: when `ol` follows `h1` within the same parent
                 -   E.g., sibling - `<h1>foo</h1><em>bar</em><ol>...</ol>` (ol will be selected)
     -   Combinators can be grouped together (or combined)
+
+# Examples
+
+-   [Class with numbers](./examples/class-beginning-with-num.html)
+-   [Grouped declarations and semicolons](./examples/grouped-declaration-semicolons.html)
+-   [XML styling](./examples/xml-styling.xml)
+-   [ID weirdness](./examples/id-weirdness.html)
+-   [Attribute selectors](./examples/attribute-selectors.html)
+-   [Doc structure / combinators](./examples/document-structure.html)
