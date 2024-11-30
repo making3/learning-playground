@@ -1,0 +1,100 @@
+<html>
+    <body>
+        <h1>Document Structure Selectors (Combinators)</h1>
+        <fieldset descendant>
+            <legend>Descendant: <code>` `</code> (space)</legend>
+            <style>
+                fieldset[descendant] {
+                    h1 em {
+                        font-size: 12px;
+                    }
+                }
+            </style>
+            <h1>
+                <p>I am a paragraph inside h1 <em>but this is emphasized</em></p>
+            </h1>
+        </fieldset>
+
+        <fieldset children>
+            <legend>Child: <code>`>`</code></legend>
+            <style>
+                fieldset[children] {
+                    /* ignored as em is not a child of h1 */
+                    h1 > em {
+                        font-size: 48px;
+                    }
+
+                    /* p is child of h1, used */
+                    h1 > p {
+                        font-size: 14px;
+                    }
+                }
+            </style>
+            <h1>
+                <p>I am a paragraph inside h1 <em>but this is emphasized</em></p>
+            </h1>
+        </fieldset>
+
+        <fieldset adjacent-sibling>
+            <legend>Adjacent-sibling: <code>`+`</code></legend>
+            <style>
+                fieldset[adjacent-sibling] {
+                    /* ignored as ol is not immediately after h1 */
+                    h1 + ol {
+                        font-size: 48px;
+                    }
+
+                    /* p is immediately after h1 */
+                    h1 + p {
+                        font-size: 12px;
+                    }
+
+                    /* only selector following is used (li immediately after li, aka, only 2nd and 3rd) */
+                    li + li {
+                        color: blue;
+                    }
+                }
+            </style>
+            <h1>I am a title</h1>
+            i am text between
+            <p>I am a paragraph</p>
+            i am text between
+            <ol>
+                <li>list item 1</li>
+                <li>list item 2</li>
+                <li>list item 3</li>
+            </ol>
+        </fieldset>
+
+        <fieldset general-sibling>
+            <legend>General-sibling: <code>`~`</code></legend>
+            <style>
+                fieldset[general-sibling] {
+                    /* not ignored as ol is after h1 with the same parent (fieldset) */
+                    h1 ~ ol {
+                        font-size: 48px;
+                    }
+
+                    /* p is after h1 with the same parent (fieldset) */
+                    h1 ~ p {
+                        font-size: 12px;
+                    }
+
+                    /* only selector following is used (li immediately after li, aka, only 2nd and 3rd) */
+                    li ~ li {
+                        color: blue;
+                    }
+                }
+            </style>
+            <h1>I am a title</h1>
+            i am text between
+            <p>I am a paragraph</p>
+            i am text between
+            <ol>
+                <li>list item 1</li>
+                <li>list item 2</li>
+                <li>list item 3</li>
+            </ol>
+        </fieldset>
+    </body>
+</html>
