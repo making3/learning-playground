@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <style>
+            /* ID selectors with multiple elements that use the same ID */
+            #foo {
+                color: green;
+            }
+
+            /* ID selectors that "combine" with itself */
+            #foo#foo {
+                font-style: italic;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Using the Same ID and Combining the Same ID Selector</h1>
+        <aside>(don't do this)</aside>
+        <p id="foo">I am green</p>
+        <p id="foo">I am also green?</p>
+    </body>
+</html>
