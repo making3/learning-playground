@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="base.css" />
+        <link rel="stylesheet" href="large.css" title="Large" />
+        <link rel="alternative stylesheet" href="eye-pain.css" title="Eye Pain" />
+    </head>
+    <body>
+        <h1>Demonstrating Alternative Stylesheets</h1>
+        <ul>
+            <li>
+                <code>(Persistent) base.css</code> should load always (<code
+                    >font-style: italic</code
+                >
+            </li>
+            <li>
+                <code>(Preferred) large.css</code> should load by default if screen > 600px (<code
+                    >font-size: 4rem</code
+                >
+            </li>
+            <li>
+                <code>(Alternative) eye-pain.css</code> should load only if user agent changes
+                it(<code>font-size: 0.25rem</code>
+            </li>
+        </ul>
+        <p>NOTE: This only works on Firefox out of the box (View > Page Style).</p>
+        <p>I am some content to preview on this awesome website.</p>
+    </body>
+</html>
