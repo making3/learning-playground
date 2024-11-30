@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <style>
+            /* This doesn't work, thankfully (with or without \) */
+            .\\1st-color {
+                color: blue;
+            }
+
+            .\\2nd-color {
+                color: green;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Trying to use a class that begins with a number</h1>
+        <p class="1st-color">I should be blue</p>
+        <p class="2nd-color">I should be green</p>
+    </body>
+</html>
