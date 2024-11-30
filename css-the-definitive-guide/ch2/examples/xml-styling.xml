@@ -1,0 +1,14 @@
+<?xml-stylesheet href="moon.css"?>
+<space>
+    <style>
+    </style>
+    <planet id="smol-planet">
+        <moon id="a">I am moon a on smol planet</moon>
+        <moon id="b">I am moon b on smol planet</moon>
+    </planet>
+
+    <planet id="big-planet">
+        <moon id="1">I am moon 1 on Big Planet</moon>
+        <moon id="2">I am moon 2 on Big Planet</moon>
+    </planet>
+</space>

@@ -1,0 +1,12 @@
+planet,
+moon {
+    display: block;
+}
+
+planet[id='smol-planet'] > moon {
+    font-size: 12px;
+}
+
+planet[id='big-planet'] > moon {
+    font-size: 24px;
+}
