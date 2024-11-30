@@ -1,0 +1,104 @@
+<html>
+    <head>
+        <style>
+            a {
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Attribute Selector Examples</h1>
+
+        <fieldset>
+            <legend>ID/Class Selector Equivalents</legend>
+            <style>
+                p.green-cls {
+                    color: green;
+                }
+
+                p[class='green-cls-attr'] {
+                    color: green;
+                }
+
+                p#red-id {
+                    color: red;
+                }
+
+                p[id='red-id-attr'] {
+                    color: red;
+                }
+            </style>
+            <p class="green-cls">I am green (<code>p.green-cls</code>)</p>
+            <p class="green-cls-attr">I am also green (<code>p[class="green-cls-attr"]</code>)</p>
+
+            <p id="red-id">I am red (<code>p#red-id</code>)</p>
+            <p id="red-id-attr">I am also red (<code>p[id="red-id-attr"]</code>)</p>
+        </fieldset>
+
+        <fieldset simple>
+            <legend>Simple Attribute Selectors</legend>
+            <style>
+                fieldset[simple] {
+                    a[href][title] {
+                        font-weight: bold;
+                    }
+                }
+            </style>
+
+            <p>Search Engines (bolded if tooltip (<code>title=">something>"</code>)):</p>
+            <a href="https://google.com" title="Google">Google</a>
+            <a href="https://yahoo.com">Yahoo</a>
+            <a href="https://bing.com">Bing</a>
+        </fieldset>
+
+        <fieldset exact>
+            <legend>Selection Based on Exact Attribute Value</legend>
+            <style>
+                fieldset[exact] {
+                    a[href="https://yahoo.com"]
+                    {
+                        font-weight: bold;
+                    }
+                }
+            </style>
+
+            <p>Search Engines (bolded if <code>href="https://yahoo.com"</code>):</p>
+            <a href="https://google.com">Google</a>
+            <a href="https://yahoo.com">Yahoo</a>
+            <a href="https://bing.com">Bing</a>
+        </fieldset>
+
+        <fieldset partial>
+            <legend>Selection Based on Partial Attribute Value</legend>
+            <style>
+                fieldset[partial] {
+                    /* Contains "submit" in space-separated list  */
+                    button[class~='submit'] {
+                        background-color: blue;
+                        color: white;
+                    }
+
+                    /* Starts with */
+                    button[class^='btn-small '] {
+                        font-size: 12px;
+                    }
+
+                    /* Includes substring */
+                    button[class*='-arrow']:after {
+                        content: '▼';
+                    }
+
+                    /* Starts with "btn-" OR "btn" exactly */
+                    button[class|='btn'] {
+                        border: none;
+                    }
+                }
+            </style>
+
+            <button class="btn">Basic Button</button>
+            <button class="btn-small submit">Small Button (Submit)</button>
+            <button class="btn-small-arrow">Small Button With Arrow</button>
+            <button class="btn-large">Small Button</button>
+        </fieldset>
+    </body>
+</html>
