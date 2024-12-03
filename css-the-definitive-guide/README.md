@@ -4,3 +4,4 @@ All notes are only for my own educational purposes (summarizing, paraphrasing, a
 
 -   [Chapter 1](./ch1/)
 -   [Chapter 2](./ch2/)
+-   [Chapter 3](./ch3/)
