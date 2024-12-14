@@ -1,0 +1,510 @@
+<html>
+    <style>
+        .preview {
+            height: 250px;
+            overflow: scroll;
+        }
+    </style>
+    <body>
+        <h2>Nth Child</h2>
+        <div class="preview">
+            <div id="nth-index">
+                <style>
+                    #nth-index {
+                        li:nth-child(0) {
+                            /* No match, 0 is invalid when only specifying n */
+                            font-size: 15rem;
+                        }
+                        li:nth-child(1) {
+                            background: lightgoldenrodyellow;
+                        }
+                        li:nth-child(2) {
+                            background: lightcoral;
+                        }
+                        li:nth-child(3) {
+                            background: lightcyan;
+                        }
+                        li:nth-child(4) {
+                            background: lightgreen;
+                        }
+                        li:nth-child(5) {
+                            background: lightgray;
+                        }
+                        li:nth-child(6) {
+                            background: lightsalmon;
+                        }
+                        li:nth-child(7) {
+                            background: lightseagreen;
+                        }
+                    }
+                </style>
+                <code>li:nth-child(&lt;index&gt;)</code>
+                <ul>
+                    <li>One</li>
+                    <li>Two</li>
+                    <li>Three</li>
+                    <li>Four</li>
+                    <li>Five</li>
+                    <li>Six</li>
+                    <li>Seven</li>
+                </ul>
+            </div>
+            <div id="nth-even">
+                <style>
+                    #nth-even {
+                        li:nth-child(even) {
+                            font-size: 1.25rem;
+                            font-weight: bold;
+                        }
+                    }
+                </style>
+                <p><code>li:nth-child(even)</code> = start at 0, add 2 each time (0, 2, 4, 6)</p>
+                <ul>
+                    <li>One</li>
+                    <li>Two</li>
+                    <li>Three</li>
+                    <li>Four</li>
+                    <li>Five</li>
+                    <li>Six</li>
+                    <li>Seven</li>
+                </ul>
+            </div>
+            <div id="nth-odd">
+                <style>
+                    #nth-odd {
+                        li:nth-child(odd) {
+                            font-size: 1.25rem;
+                            font-weight: bold;
+                        }
+                    }
+                </style>
+                <p><code>li:nth-child(odd)</code> = start at 1, add 2 each time (1, 3, 5, 7)</p>
+                <ul>
+                    <li>One</li>
+                    <li>Two</li>
+                    <li>Three</li>
+                    <li>Four</li>
+                    <li>Five</li>
+                    <li>Six</li>
+                    <li>Seven</li>
+                </ul>
+            </div>
+            <div id="nth-every-third">
+                <style>
+                    #nth-every-third {
+                        li:nth-child(3n) {
+                            font-size: 1.25rem;
+                            font-weight: bold;
+                        }
+                    }
+                </style>
+                <p><code>li:nth-child(3n)</code> = start at 0, add 3 each time (0, 3, 6)</p>
+                <ul>
+                    <li>One</li>
+                    <li>Two</li>
+                    <li>Three</li>
+                    <li>Four</li>
+                    <li>Five</li>
+                    <li>Six</li>
+                    <li>Seven</li>
+                </ul>
+            </div>
+            <div id="nth-every-third-plus-one">
+                <style>
+                    #nth-every-third-plus-one {
+                        li:nth-child(3n + 1) {
+                            font-size: 1.25rem;
+                            font-weight: bold;
+                        }
+                    }
+                </style>
+                <p><code>li:nth-child(3n + 1)</code> = start at 1, add 3 each time (1, 4, 7)</p>
+                <ul>
+                    <li>One</li>
+                    <li>Two</li>
+                    <li>Three</li>
+                    <li>Four</li>
+                    <li>Five</li>
+                    <li>Six</li>
+                    <li>Seven</li>
+                </ul>
+            </div>
+            <div id="nth-every-third-minus-one">
+                <style>
+                    #nth-every-third-minus-one {
+                        li:nth-child(3n - 1) {
+                            font-size: 1.25rem;
+                            font-weight: bold;
+                        }
+                    }
+                </style>
+                <p>
+                    <code>li:nth-child(3n - 1)</code> = start at -1, add 3 each time (-1, 2, 5, 8)
+                </p>
+                <ul>
+                    <li>One</li>
+                    <li>Two</li>
+                    <li>Three</li>
+                    <li>Four</li>
+                    <li>Five</li>
+                    <li>Six</li>
+                    <li>Seven</li>
+                </ul>
+            </div>
+            <div id="nth-negative-every-third">
+                <style>
+                    #nth-negative-every-third {
+                        li:nth-child(-3n + 4) {
+                            font-size: 1.25rem;
+                            font-weight: bold;
+                        }
+                    }
+                </style>
+                <p><code>li:nth-child(-3n + 4)</code> = start at 4, minus 3 each time</p>
+                <ul>
+                    <li>One</li>
+                    <li>Two</li>
+                    <li>Three</li>
+                    <li>Four</li>
+                    <li>Five</li>
+                    <li>Six</li>
+                    <li>Seven</li>
+                </ul>
+            </div>
+        </div>
+        <h2>Nth Last Child</h2>
+        <div class="preview">
+            <div id="nth-last-index">
+                <style>
+                    #nth-last-index {
+                        li:nth-last-child(0) {
+                            /* No match, 0 is invalid when only specifying n */
+                            font-size: 15rem;
+                        }
+                        li:nth-last-child(1) {
+                            background: lightgoldenrodyellow;
+                        }
+                        li:nth-last-child(2) {
+                            background: lightcoral;
+                        }
+                        li:nth-last-child(3) {
+                            background: lightcyan;
+                        }
+                        li:nth-last-child(4) {
+                            background: lightgreen;
+                        }
+                        li:nth-last-child(5) {
+                            background: lightgray;
+                        }
+                        li:nth-last-child(6) {
+                            background: lightsalmon;
+                        }
+                        li:nth-last-child(7) {
+                            background: lightseagreen;
+                        }
+                    }
+                </style>
+                <code>li:nth-last-child(&lt;index&gt;)</code>
+                <ul>
+                    <li>One</li>
+                    <li>Two</li>
+                    <li>Three</li>
+                    <li>Four</li>
+                    <li>Five</li>
+                    <li>Six</li>
+                    <li>Seven</li>
+                </ul>
+            </div>
+            <div id="nth-last-even">
+                <style>
+                    #nth-last-even {
+                        li:nth-last-child(even) {
+                            font-size: 1.25rem;
+                            font-weight: bold;
+                        }
+                    }
+                </style>
+                <p>
+                    <code>li:nth-last-child(even)</code> = start at 8, minus 2 each time (8, 6, 4,
+                    2, 0)
+                </p>
+                <ul>
+                    <li>One</li>
+                    <li>Two</li>
+                    <li>Three</li>
+                    <li>Four</li>
+                    <li>Five</li>
+                    <li>Six</li>
+                    <li>Seven</li>
+                </ul>
+            </div>
+            <div id="nth-last-odd">
+                <style>
+                    #nth-last-odd {
+                        li:nth-last-child(odd) {
+                            font-size: 1.25rem;
+                            font-weight: bold;
+                        }
+                    }
+                </style>
+                <p>
+                    <code>li:nth-last-child(odd)</code> = start at 7, minus 2 each time (7, 5, 3, 1,
+                    -1)
+                </p>
+                <ul>
+                    <li>One</li>
+                    <li>Two</li>
+                    <li>Three</li>
+                    <li>Four</li>
+                    <li>Five</li>
+                    <li>Six</li>
+                    <li>Seven</li>
+                </ul>
+            </div>
+            <div id="nth-last-every-third">
+                <style>
+                    #nth-last-every-third {
+                        li:nth-last-child(3n) {
+                            font-size: 1.25rem;
+                            font-weight: bold;
+                        }
+                    }
+                </style>
+                <p>
+                    <code>li:nth-last-child(3n)</code> = start at 8, minus 3 each time (8, 5, 2, -1)
+                </p>
+                <ul>
+                    <li>One</li>
+                    <li>Two</li>
+                    <li>Three</li>
+                    <li>Four</li>
+                    <li>Five</li>
+                    <li>Six</li>
+                    <li>Seven</li>
+                </ul>
+            </div>
+            <div id="nth-last-every-third-plus-one">
+                <style>
+                    #nth-last-every-third-plus-one {
+                        li:nth-last-child(3n + 1) {
+                            font-size: 1.25rem;
+                            font-weight: bold;
+                        }
+                    }
+                </style>
+                <p>
+                    <code>li:nth-last-child(3n + 1)</code> = start at 7, minus 3 each time (7, 4, 1,
+                    -2)
+                </p>
+                <ul>
+                    <li>One</li>
+                    <li>Two</li>
+                    <li>Three</li>
+                    <li>Four</li>
+                    <li>Five</li>
+                    <li>Six</li>
+                    <li>Seven</li>
+                </ul>
+            </div>
+            <div id="nth-last-every-third-minus-one">
+                <style>
+                    #nth-last-every-third-minus-one {
+                        li:nth-last-child(3n - 1) {
+                            font-size: 1.25rem;
+                            font-weight: bold;
+                        }
+                    }
+                </style>
+                <p>
+                    <code>li:nth-last-child(3n - 1)</code> = start at 9, minus 3 each time (9, 6, 3,
+                    0)
+                </p>
+                <ul>
+                    <li>One</li>
+                    <li>Two</li>
+                    <li>Three</li>
+                    <li>Four</li>
+                    <li>Five</li>
+                    <li>Six</li>
+                    <li>Seven</li>
+                </ul>
+            </div>
+            <div id="nth-last-negative-every-third">
+                <style>
+                    #nth-last-negative-every-third {
+                        li:nth-last-child(-3n + 4) {
+                            font-size: 1.25rem;
+                            font-weight: bold;
+                        }
+                    }
+                </style>
+                <p>
+                    <code>li:nth-last-child(-3n + 4)</code> = start at 4, minus-minus 3 (+3) each
+                    time (4, 7)
+                </p>
+                <ul>
+                    <li>One</li>
+                    <li>Two</li>
+                    <li>Three</li>
+                    <li>Four</li>
+                    <li>Five</li>
+                    <li>Six</li>
+                    <li>Seven</li>
+                </ul>
+            </div>
+        </div>
+        <h2>Nth Child Type Selectors</h2>
+        <div class="preview">
+            <div id="nth-without-type-selector">
+                <style>
+                    #nth-without-type-selector {
+                        :nth-child(1) {
+                            background: lightgoldenrodyellow;
+                        }
+                        :nth-child(2) {
+                            background: lightcoral;
+                        }
+                        :nth-child(3) {
+                            background: lightcyan;
+                        }
+                        :nth-child(4) {
+                            background: lightgreen;
+                        }
+                        :nth-child(5) {
+                            background: lightgray;
+                        }
+                        :nth-child(6) {
+                            background: lightsalmon;
+                        }
+                        :nth-child(7) {
+                            background: lightseagreen;
+                        }
+                    }
+                </style>
+                <code>:nth-child(&lt;index&gt; of p)</code>
+                <p>One</p>
+                <div>div1</div>
+                <p>Two</p>
+                <div>div2</div>
+                <p>Three</p>
+                <div>div3</div>
+                <p>Four</p>
+                <div>div4</div>
+                <p>Five</p>
+                <div>div5</div>
+                <p>Six</p>
+                <div>div6</div>
+                <p>Seven</p>
+                <div>div7</div>
+            </div>
+            <div id="nth-of-type-selector">
+                <style>
+                    #nth-of-type-selector {
+                        p:nth-child(1) {
+                            background: lightgoldenrodyellow;
+                        }
+                        p:nth-child(2) {
+                            background: lightcoral;
+                        }
+                        p:nth-child(3) {
+                            background: lightcyan;
+                        }
+                        p:nth-child(4) {
+                            background: lightgreen;
+                        }
+                        p:nth-child(5) {
+                            background: lightgray;
+                        }
+                        p:nth-child(6) {
+                            background: lightsalmon;
+                        }
+                        p:nth-child(7) {
+                            background: lightseagreen;
+                        }
+                    }
+                </style>
+                <code>p:nth-child(&lt;index&gt;)</code>
+                <p>One</p>
+                <div>div1</div>
+                <p>Two</p>
+                <div>div2</div>
+                <p>Three</p>
+                <div>div3</div>
+                <p>Four</p>
+                <div>div4</div>
+                <p>Five</p>
+                <div>div5</div>
+                <p>Six</p>
+                <div>div6</div>
+                <p>Seven</p>
+                <div>div7</div>
+            </div>
+            <div id="nth-of-selector">
+                <style>
+                    #nth-of-selector {
+                        :nth-child(1 of p) {
+                            background: lightgoldenrodyellow;
+                        }
+                        :nth-child(2 of p) {
+                            background: lightcoral;
+                        }
+                        :nth-child(3 of p) {
+                            background: lightcyan;
+                        }
+                        :nth-child(4 of p) {
+                            background: lightgreen;
+                        }
+                        :nth-child(5 of p) {
+                            background: lightgray;
+                        }
+                        :nth-child(6 of p) {
+                            background: lightsalmon;
+                        }
+                        :nth-child(7 of p) {
+                            background: lightseagreen;
+                        }
+                    }
+                </style>
+                <code>:nth-child(&lt;index&gt; of p)</code>
+                <p>One</p>
+                <div>div1</div>
+                <p>Two</p>
+                <div>div2</div>
+                <p>Three</p>
+                <div>div3</div>
+                <p>Four</p>
+                <div>div4</div>
+                <p>Five</p>
+                <div>div5</div>
+                <p>Six</p>
+                <div>div6</div>
+                <p>Seven</p>
+                <div>div7</div>
+            </div>
+            <div id="nth-of-selector-with-class">
+                <style>
+                    #nth-of-selector-with-class {
+                        :nth-child(2n of p.highlight) {
+                            background: lightgoldenrodyellow;
+                        }
+                    }
+                </style>
+                <code>:nth-child(even of p.highlight)</code>
+                <p class="highlight">One</p>
+                <div>div1</div>
+                <p>Two</p>
+                <div class="highlight">div2</div>
+                <p class="highlight">Three</p>
+                <div>div3</div>
+                <p class="highlight">Four</p>
+                <div>div4</div>
+                <p>Five</p>
+                <div>div5</div>
+                <p class="highlight">Six</p>
+                <div class="highlight">div6</div>
+                <p>Seven</p>
+                <div>div7</div>
+            </div>
+        </div>
+    </body>
+</html>

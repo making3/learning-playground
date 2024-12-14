@@ -1,0 +1,59 @@
+<html>
+    <head>
+        <style>
+            :target {
+                font-size: 2rem;
+            }
+
+            #foo:target {
+                color: red;
+            }
+
+            #bar:target {
+                color: green;
+            }
+
+            .big {
+                font-size: 4rem;
+            }
+
+            @scope (.my-scope) {
+                :scope {
+                    color: orange;
+                }
+            }
+
+            .main-content:target-within {
+                /* Should work when browsers begin to support (not as of Dec 2024) */
+                background-color: aliceblue;
+            }
+        </style>
+        <script type="text/javascript">
+            function makeHeaderBig() {
+                const headerId = document.getElementById('header').value;
+                const context = document.getElementById(headerId);
+
+                context.querySelectorAll(':scope em')[0].classList.add('big');
+            }
+        </script>
+    </head>
+    <body>
+        <a href="">Go to no fragment</a>
+        <a href="#foo">Go to Foo (local link)</a>
+        <a href="#bar">Go to Bar (local link)</a>
+
+        <div class="main-content">
+            <label>
+                <input id="header" type="text" />
+            </label>
+            <button onClick="makeHeaderBig();">Make Div Big</button>
+
+            <div id="foo">I am the foo div <em>(I am only red)</em></div>
+            <div id="bar">I am the bar div <em>(I am only green)</em></div>
+
+            <div class="my-scope">
+                I am within some sort of scope (FF does not work as of Dec 2024)
+            </div>
+        </div>
+    </body>
+</html>

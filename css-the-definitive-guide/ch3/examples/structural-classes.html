@@ -1,0 +1,284 @@
+<html>
+    <head>
+        <style>
+            body {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 24px;
+            }
+
+            .preview {
+                height: 400px;
+                overflow: scroll;
+                width: 500px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="preview">
+            <h2>Empty</h2>
+            <div id="empty">
+                <style>
+                    #empty {
+                        p,
+                        br {
+                            height: 20px;
+                            width: 200px;
+                        }
+                        :empty {
+                            background: seagreen;
+                        }
+                    }
+                </style>
+                <code>:empty</code>
+                <div>
+                    Empty:
+                    <p></p>
+                </div>
+                <div>
+                    Whitespace:
+                    <p>&nbsp;</p>
+                </div>
+                <div>
+                    Line break:
+                    <p><br /></p>
+                </div>
+                <div>
+                    Comment
+                    <p><!--I am a comment--></p>
+                </div>
+                <div>
+                    HTML Empty Elements
+                    <div>
+                        Input:
+                        <input type="text" />
+                    </div>
+                    <div>
+                        hr
+                        <hr />
+                    </div>
+                    <div>
+                        br
+                        <br />
+                    </div>
+                    <div>
+                        textarea
+                        <textarea></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="preview">
+            <h2>Only Child</h2>
+            <div id="only-child">
+                <style>
+                    #only-child {
+                        em:only-child {
+                            font-size: 2rem;
+                        }
+                        b:only-child {
+                            font-size: 2rem;
+                        }
+                    }
+                </style>
+                <code>em:only-child</code>
+                <div>
+                    Single Child
+                    <p><em>Emphasize me</em></p>
+                </div>
+                <div>
+                    Multiple Children
+                    <p><em>Emphasize me</em><b>And me</b></p>
+                </div>
+                <div>
+                    Single element with more
+                    <p><em>Emphasize me</em>but not me</p>
+                </div>
+            </div>
+        </div>
+        <div class="preview">
+            <h2>Only of Type</h2>
+            <div id="only-of-type">
+                <style>
+                    #only-of-type {
+                        em:only-of-type {
+                            font-size: 2rem;
+                        }
+                        b:only-of-type {
+                            font-size: 2rem;
+                        }
+                    }
+                </style>
+                <code>em:only-of-type</code>
+                <div>
+                    Single Child
+                    <p><em>Emphasize me</em></p>
+                </div>
+                <div>
+                    Multiple Children
+                    <p><em>Emphasize me</em><b>And me</b></p>
+                </div>
+                <div>
+                    Single element with more
+                    <p><em>Emphasize me</em>but not me<b>but also me</b></p>
+                </div>
+            </div>
+        </div>
+        <div class="preview">
+            <h2>First/Last Child</h2>
+            <div id="first-child">
+                <style>
+                    #first-child {
+                        em:first-child {
+                            font-size: 2rem;
+                        }
+                        b:first-child {
+                            font-size: 2rem;
+                        }
+                    }
+                </style>
+                <code>em:first-child</code>
+                <div>
+                    Single Child
+                    <p><em>Emphasize me</em></p>
+                </div>
+                <div>
+                    Multiple Children
+                    <p><em>Emphasize me</em><b>And me</b></p>
+                </div>
+                <div>
+                    Single element with more
+                    <p><em>Emphasize me</em>but not me<b>but also me</b></p>
+                </div>
+            </div>
+            <div id="last-child">
+                <style>
+                    #last-child {
+                        em:last-child {
+                            font-size: 2rem;
+                        }
+                        b:last-child {
+                            font-size: 2rem;
+                        }
+                    }
+                </style>
+                <code>em:last-child</code>
+                <div>
+                    Single Child
+                    <p><em>Emphasize me</em></p>
+                </div>
+                <div>
+                    Multiple Children
+                    <p><em>Emphasize me</em><b>And me</b></p>
+                </div>
+                <div>
+                    Single element with more
+                    <p><em>Emphasize me</em>but not me<b>but also me</b></p>
+                </div>
+            </div>
+            <div id="first-and-last-child">
+                <style>
+                    #first-and-last-child {
+                        em:first-child:last-child {
+                            font-size: 2rem;
+                        }
+                        b:first-child:last-child {
+                            font-size: 2rem;
+                        }
+                    }
+                </style>
+                <code>em:first-child:last-child</code>
+                <div>
+                    Single Child
+                    <p><em>Emphasize me</em></p>
+                </div>
+                <div>
+                    Multiple Children
+                    <p><em>Emphasize me</em><b>And me</b></p>
+                </div>
+                <div>
+                    Single element with more
+                    <p><em>Emphasize me</em>but not me<b>but also me</b></p>
+                </div>
+            </div>
+        </div>
+        <div class="preview">
+            <h2>First/Last Child Of Type</h2>
+            <div id="first-of-type">
+                <style>
+                    #first-of-type {
+                        em:first-of-type {
+                            font-size: 2rem;
+                        }
+                        b:first-of-type {
+                            font-size: 2rem;
+                        }
+                    }
+                </style>
+                <code>em:first-of-type</code>
+                <div>
+                    Single Child
+                    <p><em>Emphasize me</em></p>
+                </div>
+                <div>
+                    Multiple Children
+                    <p><em>Emphasize me</em><b>And me</b></p>
+                </div>
+                <div>
+                    Single element with more
+                    <p><em>Emphasize me</em>but not me<b>but also me</b></p>
+                </div>
+            </div>
+            <div id="last-of-type">
+                <style>
+                    #last-of-type {
+                        em:last-of-type {
+                            font-size: 2rem;
+                        }
+                        b:last-of-type {
+                            font-size: 2rem;
+                        }
+                    }
+                </style>
+                <code>em:last-of-type</code>
+                <div>
+                    Single Child
+                    <p><em>Emphasize me</em></p>
+                </div>
+                <div>
+                    Multiple Children
+                    <p><em>Emphasize me</em><b>And me</b></p>
+                </div>
+                <div>
+                    Single element with more
+                    <p><em>Emphasize me</em>but not me<b>but also me</b></p>
+                </div>
+            </div>
+            <div id="first-and-last-of-type">
+                <style>
+                    #first-and-last-of-type {
+                        em:first-of-type:last-of-type {
+                            font-size: 2rem;
+                        }
+                        b:first-of-type:last-of-type {
+                            font-size: 2rem;
+                        }
+                    }
+                </style>
+                <code>em:first-of-type:last-of-type</code>
+                <div>
+                    Single Child
+                    <p><em>Emphasize me</em></p>
+                </div>
+                <div>
+                    Multiple Children
+                    <p><em>Emphasize me</em><b>And me</b></p>
+                </div>
+                <div>
+                    Single element with more
+                    <p><em>Emphasize me</em>but not me<b>but also me</b></p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

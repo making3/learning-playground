@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <style>
+            #foo:first-child {
+                border: 1px solid lightgreen;
+            }
+
+            #bar > :first-child {
+                border: 1px solid lightgreen;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <span id="foo"><p>Foo text (my parent is styled)</p></span>
+        </div>
+        <div>
+            <span id="bar"><p>Bar text (i am styled)</p></span>
+        </div>
+    </body>
+</html>
