@@ -17,7 +17,7 @@ Format: `:<word-here>`
 -   Chaining order does not matter as it always refers to the element it's attached to
     -   `a:link:hover` === `a:hover:link`
 
-## Structural Pseudo-Classes
+### Structural Pseudo-Classes
 
 -   `:root`
     -   Always `<html>` in HTML, varies in XML
@@ -62,7 +62,7 @@ Format: `:<word-here>`
             -   `li.noted:nth-child(-n + 3)` = start at `<li> 3, subtract by 1 each time, style only when `.class`=`.noted`
                 -   **Finds all `li` as pseudo-classes only consider the anchor element**
 
-## Location Pseudo-Classes
+### Location Pseudo-Classes
 
 Based on ephemeral conditions that can't be predicted.
 
@@ -88,3 +88,14 @@ Nonhyperlink-specific
     -   Is `:root` by default
     -   Is selector matching `@scope`'s defined scope root (only real use so far in CSS)
         -   `@scope` is not widely supported (Firefox has no support w/o a flag)
+
+# Examples
+
+## Pseudo-Classes
+
+-   [Basic Pseudo Classes](./examples/pseudo-classes.html)
+-   [Root Class](./examples/root-class.html)
+-   [Misc Structural Classes](./examples/structural-classes.html)
+-   [Nth Childs](./examples/nth-child.html)
+-   [Hyperlinks](./examples/hyperlink-pseudo-classes.html)
+-   [Non-hyperlinks](./examples/nonhyperlink-pseudo-classes.html)
