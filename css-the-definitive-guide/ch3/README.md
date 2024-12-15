@@ -6,7 +6,7 @@
 
 Pseudo-class selectors = "phantom classes"
 
-Format: `:<word-here>`
+Format: `:<word-or-phrase-here>`
 
 -   Always refer to the element to which they are attached and no other elements
     -   Given: `<div><span id="bob"><p>Text</p></span></div>`
@@ -89,9 +89,94 @@ Nonhyperlink-specific
     -   Is selector matching `@scope`'s defined scope root (only real use so far in CSS)
         -   `@scope` is not widely supported (Firefox has no support w/o a flag)
 
-# Examples
+### User Action Pseudo-Classes
 
-## Pseudo-Classes
+-   `:hover`
+-   `active` = activated by user input (e.g., `<a>` when a user clicks but _hasn't released yet_)
+-   `:focus`
+-   `:focus-within` = element or descendant is focused
+-   `:focus-visible` = user agent determines if the user needs to be informed it's focused
+    -   E.g., clicking a button doesn't show focus styles whereas `:focus` does
+
+### UI-State Pseudo-Classes
+
+-   `:enabled`, `:disabled` = `disabled` attr (or set via JavaScript)
+-   `:checked` (radios/checkboxes)
+-   `:indeterminate` (radios/checkboxes when they have not been checked/unchecked yet)
+    -   Must set `.indeterminate = true` in JavaScript
+    -   Works on checkboxes, radios, and progressbar
+-   `:default`
+    -   `<input type="checkbox" checked />`
+    -   first `<button type="submit">` within a form
+    -   `<select>` and the item with `selected` attr
+-   `:autofill` = when browser autofills forms
+    -   Caveat: Many user agents default styles with `!important`, preventing these from being overridden
+-   `:placeholder-shown`
+-   `:valid`, `:invalid` = validity of an input, e.g.:
+    -   required attr but no value
+    -   min/max attrs but out of range
+    -   min/max attrs, in range, but not within "steps" (step attr)
+-   `:in-range`, `out-of-range`
+-   `:required`, `:optional` = `required` attr on html element (or not)
+-   `read-write` = nondisabled, non-read-only, or contenteditable
+-   `read-only` = opposite
+
+### Logical Pseudo-Classes
+
+-   `lang(<language>)`
+    -   basically matches `[lang|="fr"]
+    -   BUT, also matches things like `<html lang="fr">` or HTTP headers returned, whereas attribute selector does not
+-   `dir(<dir>)` = style based on `dir` html attr (rtl or ltr)
+
+### Logical Pseudo-Classes
+
+-   `:not(<comma-list-of-selectors>)`
+    -   Can chain multiple
+    -   Can have multiple selectors (comma-separated)
+    -   Can be complex selector
+    -   Can be all of the above
+-   `:is(<comma-list-of-selectors>)`, `:where(<comma-list-of-selectors>)`
+    -   `:is` takes specificity of the most specific selector
+    -   `:where` specificity = 0
+-   `:defined` = If custom element has been defined yet (`customElements.define(..)`)
+-   `:has(<comma-list-of-selectors>)`
+    -   Performance can be impacted, e.g., `div:has(.popup)` will constantly check all divs for this class, which can be expensive
+
+## Pseudo-Elements
+
+Inserts fictional elements into the document.
+
+Format: `::<word-or-phrase-here>`
+
+-   `::first-letter` = first character only
+    -   Block display elements only
+    -   Works for characters with more than one character (i.e., other languages)
+-   `::first-line` = first line when text spans multiple lines
+    -   Block display elements only
+    -   May break up nested elements like `<em>`
+-   `::placeholder` = style `placeholder` attr
+-   `::file-selector-button` = style the button created from `<input type="button">`
+-   `::before`, `::after` = add content before/after an element (`content: "something";` css property)
+-   `::selection`
+    -   E.g., drag mouse
+-   `::target-text` = style text that is within url fragment
+    -   `/some/url#:~:text=<text-to-highlight>`
+    -   Limited support in Safari anyway
+-   `::spelling-error`, `::grammar-error` (limited support in 2023)
+-   `::backdrop` = show something under the current layer with the size of the viewport
+    -   Doesn't always apply. E.g., `<dialog open` does not show it. Doing `dialog.showModal()` will.
+-   `::cue` = styles captions of media basically
+
+## Other Shadow DOM Specifics
+
+-   `host` = select element hosing shadow dom
+-   `host(<additional-selector)` = same but with more filtering (e.g., select an attr)
+-   `:host-context(<ancestor-selector>)` = use inside shadow dom, select condition outside of shadow dom and style the element within
+-   `::slotted(<selector.)` = style slots based on selectors
+
+###
+
+# Examples
 
 -   [Basic Pseudo Classes](./examples/pseudo-classes.html)
 -   [Root Class](./examples/root-class.html)
@@ -99,3 +184,8 @@ Nonhyperlink-specific
 -   [Nth Childs](./examples/nth-child.html)
 -   [Hyperlinks](./examples/hyperlink-pseudo-classes.html)
 -   [Non-hyperlinks](./examples/nonhyperlink-pseudo-classes.html)
+-   [User Actions](./examples/user-actions.html)
+-   [UI State](./examples/ui-state.html)
+-   [Language and Direction](./examples/lang-dir.html)
+-   [Logical](./examples/logical.html)
+-   [Pseudo Elements](./examples/pseudo-elements.html)

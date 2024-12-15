@@ -1,0 +1,79 @@
+<html>
+    <head>
+        <style>
+            .something {
+                :not(.intro, .about) {
+                    background: green;
+                }
+
+                :not(.content, .about) {
+                    background: blue;
+                }
+            }
+
+            .filter {
+                .intro {
+                    background: green;
+                }
+
+                :where(.intro) {
+                    background: red;
+                }
+
+                .about {
+                    background: green;
+                }
+
+                :is(.about) {
+                    background: red;
+                }
+            }
+
+            .has {
+                &:has(.intro) {
+                    background: lightblue;
+                }
+
+                :has(+ .content) {
+                    background: brown;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <fieldset>
+            <legend>
+                <code>:not</code>
+            </legend>
+            <div class="something">
+                <p class="intro">Hello thanks</p>
+                <p class="about">I am me</p>
+                <p class="content">Some content</p>
+                <p class="content">More Content</p>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>
+                <code>:is, :where</code>
+            </legend>
+            <div class="filter">
+                <p class="intro">Hello thanks</p>
+                <p class="about">I am me</p>
+                <p class="content">Some content</p>
+                <p class="content">More Content</p>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend><code>:has</code></legend>
+
+            <div class="has">
+                <p class="intro">Hello thanks</p>
+                <p class="about">I am me</p>
+                <p class="content">Some content</p>
+                <p class="content">More Content</p>
+            </div>
+        </fieldset>
+    </body>
+</html>

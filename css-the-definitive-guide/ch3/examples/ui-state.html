@@ -1,0 +1,109 @@
+<html>
+    <head>
+        <style>
+            #disabler:disabled {
+                background: darkblue;
+            }
+
+            #defaults {
+                :default + label,
+                :default {
+                    background: maroon;
+                }
+            }
+
+            #ph:placeholder-shown {
+                background: lightblue;
+            }
+
+            .validity {
+                input:valid {
+                    background: lightseagreen;
+                }
+                input:invalid {
+                    background: lightcoral;
+                }
+            }
+
+            #readwrite {
+                :read-write {
+                    background: lightgoldenrodyellow;
+                }
+
+                :read-only {
+                    background: lightgrey;
+                }
+            }
+        </style>
+        <script type="text/javascript">
+            function disableInput() {
+                const input = document.getElementById('disabler');
+                const disabledAttr = input.getAttribute('disabled');
+
+                if (!disabledAttr || disabledAttr !== 'disabled') {
+                    input.setAttribute('disabled', 'disabled');
+                } else {
+                    input.removeAttribute('disabled');
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <fieldset>
+            <legend><code>:disabled</code></legend>
+            <input id="disabler" type="text" />
+            <button onClick="disableInput();" type="button">Toggle Input Disable</button>
+        </fieldset>
+        <fieldset>
+            <legend>Checkboxes <code>:indeterminate</code></legend>
+            <label>
+                <input id="indeterminate" indeterminate="indeterminate" type="checkbox" />
+                Check / Uncheck Me
+                <script type="module">
+                    const chk = document.getElementById('indeterminate');
+                    chk.indeterminate = true;
+                </script>
+            </label>
+        </fieldset>
+        <fieldset id="defaults">
+            <legend><code>:default</code></legend>
+
+            <input id="checker" type="checkbox" checked />
+            <label for="checker"> Click things </label>
+
+            <form>
+                <button type="submit">Button</button>
+            </form>
+        </fieldset>
+        <fieldset>
+            <legend><code>:placeholder-shown</code></legend>
+            <input id="ph" type="text" placeholder="Enter your name" />
+        </fieldset>
+        <fieldset class="validity">
+            <legend><code>:valid, :invalid</code></legend>
+            <form>
+                <label for="field1">Field 1 (type into it to change)</label>
+                <input id="field1" name="field1" type="text" required />
+
+                <label for="field2">Field 2 (between 5 and 10, step=3)</label>
+                <input id="field2" name="field2" type="number" min="5" max="10" step="3" required />
+
+                <button type="submit">Submit</button>
+            </form>
+        </fieldset>
+        <fieldset id="readwrite">
+            <legend><code>:read-write, :read-only</code></legend>
+            <label for="rw-en">Enabled</label>
+            <input id="rw-en" type="text" />
+
+            <label for="rw-en">Disabled</label>
+            <input id="rw-dis" type="text" disabled />
+
+            <label for="rw-textarea">Textarea</label>
+            <textarea id="rw-textarea"></textarea>
+
+            <label for="rw-p">p with contenteditable</label>
+            <textarea id="rw-p"></textarea>
+        </fieldset>
+    </body>
+</html>

@@ -1,0 +1,75 @@
+<html>
+    <head>
+        <style>
+            .about::first-letter {
+                font-size: 2rem;
+            }
+
+            .content {
+                width: 200px;
+            }
+            .content::first-line {
+                font-size: 1.25rem;
+            }
+
+            .name::placeholder {
+                color: salmon;
+            }
+
+            .upload::file-selector-button {
+                background: lightcyan;
+                border: 1px dashed saddlebrown;
+            }
+
+            .beforeafter {
+                &::before {
+                    content: 'BEFORE~~~';
+                }
+                &::after {
+                    content: '~~~AFTER';
+                }
+            }
+
+            ::selection {
+                background: goldenrod;
+            }
+
+            ::target-text {
+                background: orchid;
+            }
+
+            dialog::backdrop {
+                background: yellow;
+            }
+        </style>
+        <script type="text/javascript">
+            function openDialog() {
+                document.getElementById('foo').showModal();
+            }
+        </script>
+    </head>
+    <body>
+        <a href="#:~:text=idk what">Highlight beforeafter</a>
+        <a href="">Un-highlight</a>
+
+        <p class="about">This is some text on the page (<code>::first-letter</code>).</p>
+        <p class="content">
+            <em>This is some text on the page which spans multiple lines hopefully </em>when
+            considering some width amounts(<code>::first-line</code>).
+        </p>
+
+        <input class="name" type="text" placeholder="Your name plz" />
+
+        <input class="upload" type="file" />
+
+        <p class="beforeafter">idk what i am doing</p>
+
+        <dialog id="foo">
+            <p>Greetings, one and all!</p>
+            <form method="dialog">
+                <button>OK</button>
+            </form>
+        </dialog>
+        <button onClick="openDialog();" type="button">Open Dialog</button>
+    </body>
+</html>

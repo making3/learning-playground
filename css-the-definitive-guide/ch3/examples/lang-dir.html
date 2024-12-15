@@ -1,0 +1,29 @@
+<html lang="en-US">
+    <head>
+        <style>
+            .language:lang('en') {
+                background: lightgreen;
+            }
+
+            .language[lang|='en'] {
+                background: lightpink;
+            }
+
+            .direct-tv:dir(rtl) {
+                background: cyan;
+            }
+
+            .direct-tv:dir(ltr) {
+                background: gold;
+            }
+        </style>
+    </head>
+    <body>
+        <p class="language">I am some text in english</p>
+        <p class="language" lang="en-US">I am some text in english (with lang attr)</p>
+
+        <p class="direct-tv">I am left-to-right text (no attr/default, in gold)</p>
+        <p class="direct-tv" dir="ltr">I am left-to-right text (in gold)</p>
+        <p class="direct-tv" dir="rtl">I am right-to-left text (in cyan)</p>
+    </body>
+</html>

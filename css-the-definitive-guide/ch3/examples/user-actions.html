@@ -1,0 +1,67 @@
+<html>
+    <head>
+        <style>
+            .activator:active {
+                background: blue;
+            }
+
+            .focusing:focus {
+                background: green;
+            }
+
+            .focus-inside:focus-within {
+                background: lightblue;
+            }
+
+            .focus-ua:focus-visible {
+                background: red;
+            }
+
+            .focus-ua:focus-visible {
+                background: red;
+            }
+        </style>
+    </head>
+    <body>
+        <fieldset>
+            <legend><code>:active</code> styles</legend>
+            <button class="activator" type="button">Click Me But Don't Release</button>
+            <input class="activator" type="text" />
+            <input class="activator" type="checkbox" />
+            <input class="activator" type="radio" />
+            <textarea class="activator"></textarea>
+            <a class="activator" href="">Link To Here</a>
+            <p class="activator" contenteditable>I am editable</p>
+        </fieldset>
+        <fieldset>
+            <legend><code>:focus</code> styles</legend>
+            <button class="focusing" type="button">Click Me But Don't Release</button>
+            <input class="focusing" type="text" />
+            <input class="focusing" type="checkbox" />
+            <input class="focusing" type="radio" />
+            <textarea class="focusing"></textarea>
+            <a class="focusing" href="">Link to Here</a>
+            <p class="focusing" contenteditable>I am editable</p>
+        </fieldset>
+        <fieldset class="focus-inside">
+            <legend><code>:focus</code> styles</legend>
+            <button type="button">Click Me But Don't Release</button>
+            <input type="text" />
+            <input type="checkbox" />
+            <input type="radio" />
+            <textarea></textarea>
+            <a href="">Link to Here</a>
+            <p contenteditable>I am editable</p>
+        </fieldset>
+        <fieldset>
+            <legend><code>:focus-visible</code> styles</legend>
+            <button class="focus-ua" type="button">Click Me But Don't Release</button>
+            <input class="focus-ua" type="text" />
+            <input class="focus-ua" type="checkbox" />
+            <input class="focus-ua" type="radio" />
+            <textarea class="focus-ua"></textarea>
+            <a class="focus-ua" href="">Link to Here</a>
+            <p class="focus-ua" contenteditable>I am editable</p>
+        </fieldset>
+    </body>
+</html>
