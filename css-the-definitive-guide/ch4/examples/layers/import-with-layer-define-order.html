@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <style>
+            @layer page, site, foo;
+            @import url('./css/with-layer.css');
+
+            .content {
+                /* Wins on ".content" because this layer is implicit */
+                color: green;
+            }
+
+            /* Ignored as @import pulls in styles with "foo" layer, and "foo" defined last before import */
+            @layer site {
+                .about,
+                .content {
+                    color: red;
+                }
+            }
+
+            /* Ignored as @import pulls in styles with "foo" layer, and "foo" defined last before import */
+            @layer page {
+                .about,
+                .content {
+                    color: blue;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <h1><code>@layer page, site, foo; @import url(./css/with-layer.css);</code></h1>
+        <p class="about">I am the about paragraph on the page</p>
+        <p class="content">I am some text which has all of the content on the page</p>
+    </body>
+</html>

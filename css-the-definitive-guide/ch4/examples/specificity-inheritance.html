@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <style>
+            /* If this was just :is(p) or p, blue would win (defined later) */
+            :is(p, #foo.bar.hello) {
+                color: red;
+            }
+
+            p {
+                color: blue;
+            }
+
+            #toolbar {
+                color: lightsalmon;
+            }
+        </style>
+    </head>
+    <body>
+        <p>
+            I should be red (<code>:is(..)</code> uses most specific selector's specificity
+            regardless if found)
+        </p>
+        <div id="toolbar">
+            <!--Links won't inherit as user agent styles them. Inheritance = no specificity, user agent has declarations = specificity -->
+            <a href="">First link</a>
+            <a href="">Second link</a>
+            <span>I am some text</span>
+        </div>
+    </body>
+</html>

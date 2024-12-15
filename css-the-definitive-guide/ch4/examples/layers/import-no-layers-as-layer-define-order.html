@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <style>
+            @layer page, site, no-layers;
+            @import url('./css/no-layers.css') layer(no-layers);
+
+            .content {
+                /* Wins on ".content" because this layer is implicit */
+                color: green;
+            }
+
+            /* Ignored as @import pulls in styles into no-layers, which is defined last (above). */
+            @layer site {
+                .about,
+                .content {
+                    color: red;
+                }
+            }
+
+            /* Ignored as @import pulls in styles into no-layers, which is defined last (above). */
+            @layer page {
+                .about,
+                .content {
+                    color: blue;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <h1>
+            <code
+                >@layer page, site, no-layers; @import url(./css/no-layers.css)
+                layer(no-layers);</code
+            >
+        </h1>
+        <p class="about">I am the about paragraph on the page</p>
+        <p class="content">I am some text which has all of the content on the page</p>
+    </body>
+</html>

@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <style>
+            .content {
+                /* Wins on ".content" because this layer is implicit */
+                color: green;
+            }
+
+            @layer site {
+                .about,
+                .content {
+                    color: red;
+                }
+            }
+
+            @layer page {
+                .about,
+                .content {
+                    color: blue;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Explicit + Implicit Layers Only</h1>
+        <p class="about">I am the about paragraph on the page</p>
+        <p class="content">I am some text which has all of the content on the page</p>
+    </body>
+</html>
